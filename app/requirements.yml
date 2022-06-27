@@ -1,4 +1,4 @@
-name: motion-project
+name: motionbackend
 dependencies:
   - python=3.10.4
   - pip=21.2.4

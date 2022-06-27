@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-edb%a(o!=88!3v$xge=yp8!h@w-_gxrs@$6g=(culd@mdgm0vz
 DEBUG = ast.literal_eval(os.environ.get('DJANGO_DEBUG'))
 
 ALLOWED_HOSTS = ['*']
-# CSRF_TRUSTED_ORIGINS = ['http://134.209.238.60', 'https://week7day3.propulsion-learn.ch'] change names
+CSRF_TRUSTED_ORIGINS = ['http://206.81.30.179', 'https://motion.propulsion-learn.ch']
 
 
 # Application definition
