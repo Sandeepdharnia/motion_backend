@@ -2,7 +2,7 @@ version: "3"
 
 services:
   app:
-    image: registry.gitlab.propulsion-home.ch/week_7/day_5/test:latest
+    image: registry.gitlab.propulsion-home.ch/full-stack/batch-20-may-2022/motion-backend/team-2-2:latest
     ports:
       - 8000:8000
     volumes:

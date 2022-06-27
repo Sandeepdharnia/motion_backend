@@ -18,8 +18,8 @@ RUN chmod + ./scripts*
 
 RUN /opt/conda/bin/conda env create -f /app/requirements.yml
 
-ENV PATH /opt/conda/envs/test/bin:$PATH
-RUN echo "source activate test" >~/.bashrc
+ENV PATH /opt/conda/envs/motionbackend/bin:$PATH
+RUN echo "source activate motionbackend" >~/.bashrc
 
 WORKDIR /frontend
 COPY ./frontend/package.json /frontend/
