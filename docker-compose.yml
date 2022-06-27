@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  app:
+    image: registry.gitlab.propulsion-home.ch/week_7/day_5/test:latest
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app:/app
+    env_file:
+      - ./env/dev.env
+    command: "sh /scripts/dev.sh"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    env_file:
+      - ./env/dev.env
+    ports:
+      - 5555:5432
+    volumes:
+      - postgres_db:/var/lib/postgresql/data
+
+volumes:
+  postgres_db:
