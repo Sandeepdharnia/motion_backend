@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-f4a)a-*68ez3r^ptkxy71ct%!jfb*1gdh*pn46t%#a7q7#eijj
 DEBUG = ast.literal_eval(os.environ.get('DJANGO_DEBUG'))
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['http://104.248.247.149', 'https://crimsonchin.propulsion-learn.ch']
+CSRF_TRUSTED_ORIGINS = ['http://206.81.30.179', 'https://motion.propulsion-learn.ch']
 
 
 # Application definition
