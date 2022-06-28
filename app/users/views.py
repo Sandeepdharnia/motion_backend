@@ -44,7 +44,3 @@ class FollowingView(GenericAPIView):
         queryset = User.objects.filter(followers__pk=request.user.pk)
         serializer = UserSerializer(queryset, many=True)
         return Response(serializer.data)
-
-
-class FollowUser(GenericAPIView):
-    pass
