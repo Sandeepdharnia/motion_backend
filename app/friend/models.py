@@ -4,7 +4,7 @@ from django.db import models
 User = get_user_model()
 
 
-class Post(models.Model):
+class Friend(models.Model):
     status1 = models.ManyToManyField(to=User, blank=True, related_name='is_friend')
     status2 = models.ManyToManyField(to=User, blank=True, related_name='is_following')
     friend_receive_list = models.ManyToManyField(to=User, blank=True, related_name='friends_request_list')
