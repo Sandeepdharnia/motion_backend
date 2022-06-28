@@ -9,5 +9,7 @@ urlpatterns = [
     path('likes/', LikeView.as_view()),
     path('following/', FollowingPostsView.as_view()),
     path('user/<int:post_id>/', ListPostsUserView.as_view()),
-    path('toggle-like/<int:post_id>/', CreateLike.as_view()),
+    path('toggle-like/<int:post_id>/', CreateLike.as_view())
+
+
 ]
