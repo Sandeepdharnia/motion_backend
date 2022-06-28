@@ -4,7 +4,7 @@ from posts.models import Post
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['text_content', 'posted_by']
+    list_display = ['content', 'author']
 
 
 admin.site.register(Post, PostAdmin)

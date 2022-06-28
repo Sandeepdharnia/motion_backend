@@ -18,7 +18,7 @@ class CreatePostView(ListCreateAPIView):
         return PostSerializer
 
     def perform_create(self, serializer):
-        serializer.save(posted_by=self.request.user)
+        serializer.save(author=self.request.user)
 
 
 class RetrieveUpdateDeletePostView(RetrieveUpdateDestroyAPIView):
@@ -43,7 +43,7 @@ class FollowingPostsView(ListAPIView):
 
     def get_queryset(self):
         followed_user_ids = self.request.user.followers.all().values_list("id", flat=True)
-        posts = Post.objects.filter(posted_by__in=followed_user_ids)
+        posts = Post.objects.filter(author__in=followed_user_ids)
         return posts
 
 
@@ -54,7 +54,7 @@ class ListPostsUserView(ListAPIView):
 
     def get_queryset(self):
         user_id = self.kwargs.get("post_id")
-        return Post.objects.filter(posted_by__id=user_id).order_by("-created")
+        return Post.objects.filter(author__id=user_id).order_by("-created")
 
 
 class CreateLike(GenericAPIView):
@@ -71,3 +71,22 @@ class CreateLike(GenericAPIView):
             return Response(self.get_serializer(instance=post_to_save).data)
         user.liked_posts.add(post_to_save)
         return Response(self.get_serializer(instance=post_to_save).data)
+
+class ListSearchPostUserView(ListAPIView):
+    serializer_class = PostSerializer
+    lookup_url_kwarg = 'search'
+    permission_classes = [IsUser]
+
+    def get_queryset(self):
+        search_string = self.kwargs.get("search_string")
+        posts_found = Post.objects.filter(content=search_string).order_by("-created")
+        return posts_found
+
+class FriendsPostsView(ListAPIView):
+    permission_classes = [IsUser]
+    serializer_class = PostSerializer
+
+    def get_queryset(self):
+        friends_user_ids = self.request.user.friends.all().values_list("id", flat=True)
+        posts = Post.objects.filter(author__in=friends_user_ids)
+        return posts

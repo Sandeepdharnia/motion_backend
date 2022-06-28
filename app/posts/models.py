@@ -16,4 +16,4 @@ class Post(models.Model):
     # comments = models.ForeignKey(to=comment,blank=True,null=True, related_name='post_id') #will be changed later
 
     def __str__(self):
-        return f'ID{self.id}: {self.posted_by}'
+        return f'ID{self.id}: {self.author}'
