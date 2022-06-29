@@ -9,4 +9,4 @@ class Interest(models.Model):
     liked_things = models.ManyToManyField(to=User, blank=True, related_name='things_user_likes')
 
     def __str__(self):
-        return f'ID{self.id}: {self.title} '
+        return f'ID{self.id}: {self.title}'
