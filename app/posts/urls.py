@@ -3,8 +3,6 @@ from django.urls import path
 from posts.views import CreatePostView, RetrieveUpdateDeletePostView, LikeView, FollowingPostsView, ListPostsUserView, \
     CreateLike
 
-from posts.views import ListSearchPostUserView
-
 from posts.views import FriendsPostsView
 
 urlpatterns = [
@@ -15,6 +13,4 @@ urlpatterns = [
     path('friends/', FriendsPostsView.as_view()),
     path('user/<int:post_id>/', ListPostsUserView.as_view()),
     path('toggle-like/<int:post_id>/', CreateLike.as_view()),
-    path('?search=<str:search_string>', ListSearchPostUserView.as_view()),
-
 ]
