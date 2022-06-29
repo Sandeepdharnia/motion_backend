@@ -14,9 +14,9 @@ class User(AbstractUser):
     location = models.CharField(max_length=200, null=True, blank=True)
     job = models.CharField(max_length=200, null=True, blank=True)
     banner = models.ImageField(null=True, blank=True)
-    things_user_likes = models.CharField(max_length=200, null=True, blank=True, verbose_name='Interest')
+    #things_user_likes = models.CharField(max_length=200, null=True, blank=True, verbose_name='Interest')
     # will be changed, to=Interest, manytomany
-    comments = models.CharField(max_length=200, null=True, blank=True, verbose_name='Comment')
+   # comments = models.CharField(max_length=200, null=True, blank=True, verbose_name='Comment')
     # will be changed, to=Comment, foreignkey
     friends = models.ManyToManyField('self', symmetrical=False, related_name='current_user_friends', blank=True)
     friends_of = models.ManyToManyField('self', symmetrical=False, related_name='friends_of_friends_current_user',
