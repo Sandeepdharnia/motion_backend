@@ -25,7 +25,7 @@ print('base dir', BASE_DIR)
 SECRET_KEY = 'django-insecure-edb%a(o!=88!3v$xge=yp8!h@w-_gxrs@$6g=(culd@mdgm0vz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = ast.literal_eval(os.environ.get('DJANGO_DEBUG'))
+DEBUG = os.environ.get('DJANGO_DEBUG', "True") == "True"
 
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['http://206.81.30.179', 'https://motion.propulsion-learn.ch']
