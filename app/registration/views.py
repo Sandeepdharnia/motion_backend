@@ -10,7 +10,7 @@ import users.models
 from registration.models import Registration
 from django.core.mail import send_mail
 
-
+#curtis
 class RegisterView(View):
 
     def post(self, request, *args, **kwargs):
