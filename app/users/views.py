@@ -76,17 +76,22 @@ class FollowUser(GenericAPIView):  # creating a class to follow (of the user mod
     def get(self, request, *args, **kwargs):
         current_user = self.request.user
         other_user = get_object_or_404(User, pk=kwargs.get("user_id"))
-        if not other_user.is_following:
+        # if not other_user.is_following:
+        if not current_user in other_user.following_users.all():
             current_user.followers.add(other_user.id)
             other_user.following_users.add(current_user.id)
-            other_user.is_following = True
-            other_user.save()
-            return Response(status=204)
+            # other_user.is_following = True
+            # other_user.is_following.set(True)
+            # other_user.save()
+            # other_user.save()
+            return Response(status=203)
         else:
             current_user.followers.remove(other_user.id)
             other_user.following_users.remove(current_user.id)
-            other_user.is_following = False
-            other_user.save()
+            # other_user.is_following = False
+            # other_user.save()
+            # other_user.is_following.set(False)
+            # other_user.save()
             return Response(status=204)
 
 

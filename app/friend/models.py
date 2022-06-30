@@ -6,7 +6,7 @@ User = get_user_model()
 
 class Friend(models.Model):
     status1 = models.ManyToManyField(to=User, blank=True, related_name='is_friend')
-    status2 = models.ManyToManyField(to=User, blank=True, related_name='is_following')
+    # status2 = models.ManyToManyField(to=User, blank=True, related_name='is_following')
     friend_receive_list = models.ManyToManyField(to=User, blank=True, related_name='friends_request_list')
     friend_request_received = models.ManyToManyField(to=User, blank=True, related_name='friend_requested')
 

@@ -19,7 +19,7 @@ class User(AbstractUser):
     # will be changed, to=Interest, manytomany
    # comments = models.CharField(max_length=200, null=True, blank=True, verbose_name='Comment')
     # will be changed, to=Comment, foreignkey
-    is_following = models.BooleanField(default=False)
+    # is_following = models.BooleanField(default=False)
     friends_fr_list_sender = models.ManyToManyField('self', symmetrical=False, related_name='current_user_fr_request', blank=True)
     friends_fr_list_receiver = models.ManyToManyField('self', symmetrical=False, related_name='current_user_received_fr_request', blank=True)
     friends = models.ManyToManyField('self', related_name='current_user_friends', blank=True)
