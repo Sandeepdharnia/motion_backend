@@ -43,8 +43,14 @@ INSTALLED_APPS = [
     'django_filters',
 
     #own apps
-    'posts',
     'users',
+    'posts',
+    'comment',
+    'friend',
+    'interest',
+    'registration',
+    'shared_posts',
+
 
     #third party
     'rest_framework',
