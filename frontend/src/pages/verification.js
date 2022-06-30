@@ -48,7 +48,7 @@ const Verification = () => {
             
         };
         const fetchConfig = {
-            method: 'PATCH',
+            method: 'POST',
             headers: new Headers({
                 "Content-Type": "application/json",
             }),
