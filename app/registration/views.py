@@ -14,7 +14,7 @@ from django.core.mail import send_mail
 class RegisterView(View):
 
     def post(self, request, *args, **kwargs):
-        data = request.POST.get('email')
+        data = json.loads(request.body).get('email')
         check_if_email_exists = []
         for email in Registration.objects.all().values_list('email', flat=True):
             check_if_email_exists.append(email)
@@ -36,14 +36,14 @@ class RegisterView(View):
 
 class ValidationView(View):
     def post(self, request, *args, **kwargs):
-
-        Email = request.POST.get('email')
-        code = request.POST.get('code')
-        username = request.POST.get('username')
-        firstname = request.POST.get('first_name')
-        lastname = request.POST.get('last_name')
-        password = request.POST.get('password')
-        passwordRepeat = request.POST.get('password_repeat')
+        data = json.loads(request.body)
+        Email = data.get('email')
+        code = data.get('code')
+        username = data.get('username')
+        firstname = data.get('first_name')
+        lastname = data.get('last_name')
+        password = data.get('password')
+        passwordRepeat = data.get('password_repeat')
         database = Registration.objects.all().values_list('email', flat=True)
         for email in database:
             if Email in database:
