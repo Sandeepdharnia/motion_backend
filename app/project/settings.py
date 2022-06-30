@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_filters',
 
     #own apps
     'users',
@@ -52,10 +51,10 @@ INSTALLED_APPS = [
     'registration',
     'shared_posts',
 
-
     #third party
     'rest_framework',
     'drf_yasg',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
