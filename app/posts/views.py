@@ -11,6 +11,7 @@ from posts.serializers import PostSerializer, PostCreateSerializer, PostLikedSer
 from posts.permissions import IsNotOwner
 from rest_framework import filters
 
+
 class CreatePostView(ListCreateAPIView):
     queryset = Post.objects.all()
     permission_classes = []
