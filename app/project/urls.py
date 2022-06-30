@@ -44,5 +44,7 @@ urlpatterns = [
 
     path('app/posts/', include('posts.urls')),
     path('app/api/users/', include('users.urls')),
+    path('app/api/auth/', include('registration.urls')),
+
 ]
 
