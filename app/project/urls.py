@@ -43,7 +43,7 @@ urlpatterns = [
     path('app/token/verify/', jwt_views.TokenVerifyView.as_view(), name='token_refresh'),
 
     path('app/posts/', include('posts.urls')),
-    path('app/users/', include('users.urls')),
+    path('app/api/users/', include('users.urls')),
     path('app/api/auth/', include('registration.urls')),
 
 ]

@@ -9,7 +9,7 @@ class User(AbstractUser):
 
     email = models.EmailField(unique=True)
 
-    followers = models.ManyToManyField(to='self', blank=True)
+    followers = models.ManyToManyField(to='self', blank=True, related_name='following')
     avatar = models.ImageField(null=True, blank=True)
     location = models.CharField(max_length=200, null=True, blank=True)
     job = models.CharField(max_length=200, null=True, blank=True)
