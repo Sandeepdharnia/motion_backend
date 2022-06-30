@@ -12,7 +12,7 @@ const Verification = () => {
     const [password,setPassword] = useState("");
     const [passwordRepeat,setPasswordRepeat] = useState("");
     const [code,setCode] = useState("");
-    const url = "https://motion.propulsion-home.ch/backend/api/auth/registration/validation/";
+    const url = "https://motion.propulsion-learn.ch/app/api/auth/registration/validation/";
 
     const updateCode = (event) =>{
         setCode(event.target.value);
