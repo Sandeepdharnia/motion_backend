@@ -57,7 +57,7 @@ class ValidationView(View):
                         else:
                             if password == passwordRepeat:
 
-                                new_user = users.models.User.objects.create(**data)
+                                new_user = users.models.User.objects.create(email=Email, username=username, first_name=firstname, last_name=lastname, password=password)
                                 new_user.save()
                                 return JsonResponse('password is the same', status=201, safe=False)
                             else:

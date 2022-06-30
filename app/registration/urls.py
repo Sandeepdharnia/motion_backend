@@ -5,7 +5,7 @@ from registration.views import RegisterView, ValidationView
 urlpatterns = [
 
     path('registration/', RegisterView.as_view()),
-    # path('registration/validation/',ValidationView.as_view()),
+    path('registration/validation/',ValidationView.as_view()),
     path('token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
     path('token/verify/', jwt_views.TokenVerifyView.as_view(), name='token_refresh'),
