@@ -10,7 +10,7 @@ const SignUpStep1 = () => {
 const navigate = useNavigate();
 const [email,setEmail] = useState("");
 const dispatch = useDispatch();
-const url = "https://motion.propulsion-home.ch/backend/api/auth/registration/";
+const url = "https://motion.propulsion-learn.ch/app/api/auth/registration/";
 
 const updateEmail = (event) => {
     setEmail(event.target.value);

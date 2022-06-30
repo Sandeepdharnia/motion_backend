@@ -12,3 +12,4 @@ dependencies:
      - flake8==4.0.1
      - gunicorn
      - django-filter
+     - django-cors-headers

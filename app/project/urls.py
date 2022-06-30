@@ -38,12 +38,9 @@ urlpatterns = [
     path('app/admin/', admin.site.urls),
     path('app/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 
-    path('app/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('app/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-    path('app/token/verify/', jwt_views.TokenVerifyView.as_view(), name='token_refresh'),
-
-    path('app/api/posts/', include('posts.urls')),
-    path('app/api/', include('users.urls')),
+    path('app/posts/', include('posts.urls')),
+    path('app/api/users/', include('users.urls')),
+    path('app/api/auth/', include('registration.urls')),
 
 ]
 

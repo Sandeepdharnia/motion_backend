@@ -19,7 +19,7 @@ const Signin = () => {
     }
     const login = (event) =>{
         event.preventDefault();
-        const url = "https://motion.propulsion-home.ch/backend/api/auth/token/"
+        const url = "https://motion.propulsion-learn.ch/app/api/auth/token/"
         const data = {
             email:email,
             password:password,
