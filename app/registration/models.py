@@ -19,6 +19,8 @@ class Registration(models.Model):
     user = models.OneToOneField(to=User, on_delete=models.CASCADE, related_name='profile', blank=True, null=True)
     code = models.CharField(default=code_generator, max_length=5)
 
+
+
     def __str__(self):
         return f'ID{self.id}: {self.email}'
 

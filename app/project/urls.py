@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_simplejwt import views as jwt_views
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="Motion",
+      title="E-Commerce SIT",
       default_version='v1',
       description="Description of your Django App",
       terms_of_service="https://www.google.com/policies/terms/",
@@ -37,9 +38,12 @@ urlpatterns = [
     path('app/admin/', admin.site.urls),
     path('app/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 
+    path('app/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('app/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('app/token/verify/', jwt_views.TokenVerifyView.as_view(), name='token_refresh'),
+
     path('app/posts/', include('posts.urls')),
     path('app/users/', include('users.urls')),
-    path('app/api/auth/', include('registration.urls')),
 
 ]
 
