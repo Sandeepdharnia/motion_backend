@@ -15,7 +15,7 @@ def code_generator(length=5):
 
 class Registration(models.Model):
     email = models.CharField(max_length=50)
-    username = models.CharField(max_length=30)
+    username = models.CharField(max_length=30, unique=True)
     user = models.OneToOneField(to=User, on_delete=models.CASCADE, related_name='profile', blank=True, null=True) #causin problems:team-2-2-app-1  | registration.Registration.user: (fields.E300) Field defines a relation with model 'User', which is either not installed, or is abstract.team-2-2-app-1  | registration.Registration.user: (fields.E307) The field registration.Registration.user was declared with a lazy reference to 'registration.user', but app 'registration' doesn't provide model 'user'.
     code = models.IntegerField(max_length=5, default=code_generator)
 
