@@ -154,7 +154,9 @@ class AcceptFrRequest(GenericAPIView):
         for user in users_sent_fr_request_list:
             if user.id == other_user.id:
                 current_user.friends.add(other_user.id)
-                current_user.friends_fr_list_receiver.remove(other_user.id)
+                other_user.friends_fr_list_receiver.remove(current_user.id)
+                current_user.friends_fr_list_sender.remove(current_user.id)
+                # User.objects.filter(friends_fr_list_receiver=current_user).get(other_user.id)
                 return Response(status=200)
         # for user_element in current_user.friends_fr_list_receiver.all():
         #     if user_element == other_user.id:
