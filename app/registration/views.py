@@ -1,3 +1,5 @@
+import logging
+
 from django.shortcuts import render
 from rest_framework.generics import GenericAPIView
 from django.http import JsonResponse, HttpResponse
@@ -37,33 +39,22 @@ class RegisterView(View):
 class ValidationView(View):
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
-        Email = data.get('email')
+        email = data.get('email')
         code = data.get('code')
         username = data.get('username')
         firstname = data.get('first_name')
         lastname = data.get('last_name')
         password = data.get('password')
-        passwordRepeat = data.get('password_repeat')
-        database = Registration.objects.all().values_list('email', flat=True)
-        for email in database:
-            if Email in database:
-                whatever = Registration.objects.get(email=Email)
-                code2 = whatever.code
-                if code2 == code:
-                    database2 = users.models.User.objects.all().values_list('username', flat=True)
-                    for userNAme in database2:
-                        if username in database2:
-                            return JsonResponse('username taken please select another', status=201, safe=False)
-                        else:
-                            if password == passwordRepeat:
+        password_repeat = data.get('password_repeat')
 
-                                new_user = users.models.User.objects.create(email=Email, username=username, first_name=firstname, last_name=lastname, password=password)
-                                new_user.save()
-                                return JsonResponse('password is the same', status=201, safe=False)
-                            else:
-                                return JsonResponse('passwords do not match', status=201, safe=False)
-                    return JsonResponse('it works2', status=201, safe=False)
-                else:
-                    return JsonResponse('it doesnt work1', status=201, safe=False)
-            else:
-                return JsonResponse('it doesnt work2', status=201, safe=False)
+        if password != password_repeat:
+            return JsonResponse("Passwords do not match", status=400, safe=False)
+
+        registration = get_object_or_404(Registration, email=email)
+        if registration.code != code:
+            return JsonResponse("Code is invalid.", status=400, safe=False)
+
+        new_user = users.models.User.objects.create(email=email, username=username, first_name=firstname, last_name=lastname)
+        new_user.set_password(password) # https://docs.djangoproject.com/en/4.0/topics/auth/default/#changing-passwords
+        new_user.save()
+        return JsonResponse('Created successfully', status=201, safe=False)
