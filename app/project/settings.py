@@ -28,6 +28,7 @@ SECRET_KEY = 'django-insecure-edb%a(o!=88!3v$xge=yp8!h@w-_gxrs@$6g=(culd@mdgm0vz
 DEBUG = os.environ.get('DJANGO_DEBUG', "True") == "True"
 
 ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
 CSRF_TRUSTED_ORIGINS = ['http://206.81.30.179', 'https://motion.propulsion-learn.ch']
 
 
