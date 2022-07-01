@@ -22,9 +22,9 @@ class Registration(models.Model):
     def __str__(self):
         return f'ID{self.id}: {self.email}'
 
-
-@receiver(post_save, sender=User)
-def create_registration_profile(sender, instance, *args, **kwargs):
-    profile, created = Registration.objects.get_or_create(user=instance)
-    if created:
-        profile.save()
+#
+# @receiver(post_save, sender=User)
+# def create_registration_profile(sender, instance, *args, **kwargs):
+#     profile, created = Registration.objects.get_or_create(user=instance)
+#     if created:
+#         profile.save()

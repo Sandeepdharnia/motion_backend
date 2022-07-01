@@ -1,3 +1,5 @@
+import logging
+
 from django.shortcuts import render
 from rest_framework.generics import GenericAPIView
 from django.http import JsonResponse, HttpResponse
@@ -49,6 +51,11 @@ class ValidationView(View):
             if Email in database:
                 whatever = Registration.objects.get(email=Email)
                 code2 = whatever.code
+                print(type(code2),code2, type(code),code)
+                logging.warning(type(code2))
+                logging.warning(type(code))
+                logging.warning(code)
+                logging.warning(code2)
                 if code2 == code:
                     database2 = users.models.User.objects.all().values_list('username', flat=True)
                     for userNAme in database2:
@@ -57,8 +64,7 @@ class ValidationView(View):
                         else:
                             if password == passwordRepeat:
 
-                                new_user = users.models.User.objects.create(email=Email, username=username, first_name=firstname, last_name=lastname, password=password)
-                                new_user.save()
+                                users.models.User.objects.create(email=Email, username=username, first_name=firstname, last_name=lastname, password=password)
                                 return JsonResponse('password is the same', status=201, safe=False)
                             else:
                                 return JsonResponse('passwords do not match', status=201, safe=False)
